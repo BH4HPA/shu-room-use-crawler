@@ -7,6 +7,14 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.get('/', async (req, res) => {
+  if (req.query.access !== 'BH4HPA') {
+    res.status(403);
+    res.json({
+      code: -1,
+      message: 'Access Denied',
+    });
+    return;
+  }
   GetRoomUseInfos({
     username: process.env.SHUSTUID!,
     password: process.env.SHUSTUPWD!,
