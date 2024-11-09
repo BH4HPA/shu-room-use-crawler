@@ -24,6 +24,7 @@ app.get('/', async (req, res) => {
         code: 0,
         message: 'success',
         infos,
+        update: new Date().getTime(),
       });
     })
     .catch((err) => {
